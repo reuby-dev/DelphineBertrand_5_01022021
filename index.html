@@ -20,32 +20,54 @@
 
 <body>
     <header>
-        <div class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="images/logo-orinoco.png"
-                            alt="le logo d'oronico représentant un caddie pour le shopping">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
-                        <ul class="navbar-nav ">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Mon compte</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Panier</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+        <div class="container mb-5">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo-orinoco.png" alt="le logo d'oronico représentant un caddie pour le shopping">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Mon compte</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Panier</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
     </header>
+
+    <div id="carouselPresentation" class="carousel slide container" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src="images/teddy_5.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="images/teddy_4.jpg"
+                    alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src="images/teddy_3.jpg" alt="Third slide">
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselPresentation" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Précédent</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselPresentation" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Suivant</span>
+        </a>
+    </div>
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
