@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="" />
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS personnalisé-->
+    <link rel="stylesheet" href="style.css">
+    <!--Viewport-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Google font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!--Font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container mb-5">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo-orinoco.png" alt="le logo d'oronico représentant un caddie pour le shopping">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="panier.html">Panier <i class="fas fa-shopping-cart"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mb-5 rounded p-3 bg-prim">
+        <div class="row">
+            <div class="col">
+                <h2>Votre panier</h2>
+
+            </div>
+            <div class="col">
+                <h2>Passer commande</h2>
+                <form action="" method="get">
+                    <label for="GET-name">Prénom:</label>
+                    <input id="GET-name" type="text" name="prénom">
+
+                    <label for="GET-name">Nom:</label>
+                    <input id="GET-name" type="text" name="nom">
+
+                    <label for="GET-name">Adresse e-mail:</label>
+                    <input id="GET-name" type="text" name="email">
+
+                    <label for="GET-name">Adresse:</label>
+                    <input id="GET-name" type="text" name="adresse">
+
+                    <label for="GET-name">Code postal</label>
+                    <input id="GET-name" type="text" name="code postal">
+
+                    <label for="GET-name">Ville :</label>
+                    <input id="GET-name" type="text" name="name">
+                    <a href="validation.html"><input type="submit" value="Procéder au paiement"></a>
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
