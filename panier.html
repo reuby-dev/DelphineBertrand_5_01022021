@@ -34,7 +34,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="index.html">Home</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="panier.html">Panier <i class="fas fa-shopping-cart"></i></a>
                         </li>
                     </ul>
@@ -43,33 +43,55 @@
         </div>
     </header>
 
-    <main class="container mb-5 rounded p-3 bg-prim">
+    <main class="container mb-5">
         <div class="row">
-            <div class="col">
-                <h2>Votre panier</h2>
+            <div class="col rounded bg-prim mr-5 p-3 mb-5">
+                <h2 class="mb-3">Votre panier</h2>
 
             </div>
-            <div class="col">
-                <h2>Passer commande</h2>
+            <div class="col rounded bg-prim p-3 mb-5">
+                <h2 class="mb-3">Passer commande</h2>
                 <form action="" method="get">
-                    <label for="GET-name">Prénom:</label>
-                    <input id="GET-name" type="text" name="prénom">
 
-                    <label for="GET-name">Nom:</label>
-                    <input id="GET-name" type="text" name="nom">
+                    <div class="row">
+                        <div class="col d-flex flex-column mb-3">
+                            <label for="GET-name">Prénom</label>
+                            <input id="GET-name" type="text" name="prénom">
+                        </div>
 
-                    <label for="GET-name">Adresse e-mail:</label>
-                    <input id="GET-name" type="text" name="email">
+                        <div class="col d-flex flex-column mb-3">
+                            <label for="GET-name">Nom</label>
+                            <input id="GET-name" type="text" name="nom">
+                        </div>
+                    </div>
 
-                    <label for="GET-name">Adresse:</label>
-                    <input id="GET-name" type="text" name="adresse">
+                    <div class="row">
+                        <div class="col d-flex flex-column mb-3">
+                            <label for="GET-name">Adresse e-mail</label>
+                            <input id="GET-name" type="text" name="email">
+                        </div>
 
-                    <label for="GET-name">Code postal</label>
-                    <input id="GET-name" type="text" name="code postal">
+                        <div class="col d-flex flex-column mb-3">
+                            <label for="GET-name">Adresse</label>
+                            <input id="GET-name" type="text" name="adresse">
+                        </div>
+                    </div>
 
-                    <label for="GET-name">Ville :</label>
-                    <input id="GET-name" type="text" name="name">
-                    <a href="validation.html"><input type="submit" value="Procéder au paiement"></a>
+                    <div class="row">
+                        <div class="col d-flex flex-column mb-3">
+                            <label for="GET-name">Code postal</label>
+                            <input id="GET-name" type="text" name="code postal">
+                        </div>
+
+                        <div class="col d-flex flex-column mb-3">
+                            <label for="GET-name">Ville</label>
+                            <input id="GET-name" type="text" name="ville">
+                        </div>
+                    </div>
+
+                    <a href="validation.html">
+                        <button type="submit" form="form" value="Submit" class="btn bg-white w-100 mt-3">Procéder au
+                            paiement</button></a>
                 </form>
 
             </div>
