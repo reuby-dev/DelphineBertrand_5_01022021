@@ -50,8 +50,8 @@ img {
     border-radius: 10px !important;
 }
 
-.bg-white {
-    background-color: #dfd1db !important;
+.bg-prim-dark {
+    background-color: white !important;
 }
 
 .btn:hover {
