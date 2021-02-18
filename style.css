@@ -17,6 +17,10 @@ img {
     object-fit: cover;
 }
 
+.img-teddy {
+    height: 200px;
+}
+
 .container {
     max-width: 1400px;
 }
@@ -33,13 +37,14 @@ img {
     transition: background 0.3s ease-in-out;
 }
 
-
-
 .card {
-    cursor: pointer;
     border-radius: 10px;
     transition: box-shadow 0.3s ease-in-out;
     overflow: hidden;
+}
+
+.price {
+    font-weight: 700;
 }
 
 .card:hover {
