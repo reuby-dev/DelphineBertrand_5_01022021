@@ -17,6 +17,11 @@ img {
     object-fit: cover;
 }
 
+a {
+    text-decoration: none !important;
+    color: black!important;
+}
+
 .img-teddy {
     height: 200px;
 }
