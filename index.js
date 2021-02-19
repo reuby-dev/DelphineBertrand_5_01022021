@@ -47,7 +47,7 @@ fetch('http://localhost:3000/api/teddies')
 
             /**PRICE */
             let price = document.createElement('p');
-            price.classList.add('price');
+            price.classList.add('price', 'bg-prim', 'rounded');
             price.innerText = teddy[index].price + ' €'; //sélectionne le prix dynamiquement et ajoute la devise
             topCard.appendChild(price);
             
