@@ -8,6 +8,8 @@ h2 {
 }
 
 input {
+    border-radius: 30px;
+    padding-left: 15px;
     border: none;
 }
 
