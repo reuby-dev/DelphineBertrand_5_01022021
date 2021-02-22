@@ -11,7 +11,7 @@ let colorCollection = {
     'Beige': '#C8AD7F',
 };
 
-fetch('http://localhost:3000/api/teddies/5beaa8bf1c9d440000a57d94')
+fetch('http://localhost:3000/api/teddies/5be9c8541c9d440000665243')
     .then(function (response) {
         return response.json();
     }).then(function (teddy) {
@@ -49,10 +49,16 @@ fetch('http://localhost:3000/api/teddies/5beaa8bf1c9d440000a57d94')
         titlePriceContainer.appendChild(name);
 
         /**PRIX */
+        function divide(price) {
+            let divider = price / 100;
+            return divider;
+        }
+
         let price = document.createElement('p');
         price.classList.add('price', 'bg-prim-dark', 'rounded');
-        price.innerText = teddy.price + ' €';
+        price.innerText = divide(teddy.price) + ' €';
         titlePriceContainer.appendChild(price);
+        
 
         /**DESCRIPTION DU PRODUIT */
         let descriptionProduct = document.createElement('p');
@@ -69,14 +75,14 @@ fetch('http://localhost:3000/api/teddies/5beaa8bf1c9d440000a57d94')
         colorContainer.classList.add('d-flex', 'justify-content-between', 'mb-3');
         botContainer.appendChild(colorContainer);
 
-        /**CHOIX DES COULEURS */
+        /**CHOIX DES COULEURS DYNAMIQUE */
         for (let i = 0; i < teddy.colors.length; i++) {
-            let color = document.createElement('div');
-            let idColor = teddy.colors[i]; //récupère la couleur contenue dans l'élément
-            let hexColor = colorCollection[idColor];
-            color.classList.add('color-choice');
-            color.style.backgroundColor = hexColor;
-            colorContainer.appendChild(color);
+        let colorChoice = document.createElement('div');
+        let idColor = teddy.colors[i]; //récupère la couleur contenue dans l'élément
+        let hexColor = colorCollection[idColor];
+        colorChoice.classList.add('color-choice');
+        colorChoice.style.backgroundColor = hexColor;
+        colorContainer.appendChild(colorChoice);
         };
 
         /**BOUTON AJOUTER AU PANIER */
@@ -85,12 +91,3 @@ fetch('http://localhost:3000/api/teddies/5beaa8bf1c9d440000a57d94')
         buttonAdd.innerText = 'Ajouter au panier';
         botContainer.appendChild(buttonAdd);
 });
-
-// for (let i = 0; i < teddy.colors.length; i++) {
-//     let color = document.createElement('div');
-//     let idColor = teddy.colors[i]; //récupère la couleur contenue dans l'élément
-//     let hexColor = colorCollection[idColor];
-//     color.classList.add('color-choice');
-//     color.style.backgroundColor = hexColor;
-//     colorContainer.appendChild(color);
-// };

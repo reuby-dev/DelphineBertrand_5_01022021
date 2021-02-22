@@ -46,9 +46,14 @@ fetch('http://localhost:3000/api/teddies')
             topCard.appendChild(h2);
 
             /**PRICE */
+            function divide(price) {
+                let divider = price / 100;
+                return divider;
+            }
+
             let price = document.createElement('p');
             price.classList.add('price', 'bg-prim', 'rounded');
-            price.innerText = teddy[index].price + ' €'; //sélectionne le prix dynamiquement et ajoute la devise
+            price.innerText = divide (teddy[index].price) + ' €'; //sélectionne le prix dynamiquement et ajoute la devise
             topCard.appendChild(price);
             
             /**DESCRIPTION */
