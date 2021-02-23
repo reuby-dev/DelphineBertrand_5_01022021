@@ -16,7 +16,7 @@ fetch('http://localhost:3000/api/teddies')
             /**LIEN */
             let productLink = document.createElement('a');
             colProduct.appendChild(productLink);
-            productLink.setAttribute('href', 'produit.html' + '?id=' + teddy[index]._id); //crée des attributs au lien
+            productLink.setAttribute('href', 'produit.html?id=' + teddy[index]._id); //crée des attributs au lien
             
             /*CARD*/
             let card = document.createElement('div');

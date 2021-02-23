@@ -11,10 +11,19 @@ let colorCollection = {
     'Beige': '#C8AD7F',
 };
 
-fetch('http://localhost:3000/api/teddies/5be9c8541c9d440000665243')
+function getId() {
+    const param = window.location.search;
+    console.log(param);
+    const id = param.replace('?id=', '');
+    return id;
+}
+
+fetch('http://localhost:3000/api/teddies/' + getId())
     .then(function (response) {
         return response.json();
     }).then(function (teddy) {
+
+        
         /**ROW */
         let rowProduct = document.getElementById('product-card'); //récupère la ligne du DOM
 
@@ -50,8 +59,8 @@ fetch('http://localhost:3000/api/teddies/5be9c8541c9d440000665243')
 
         /**PRIX */
         function divide(price) {
-            let divider = price / 100;
-            return divider;
+            let division = price / 100;
+            return division;
         }
 
         let price = document.createElement('p');
@@ -86,8 +95,12 @@ fetch('http://localhost:3000/api/teddies/5be9c8541c9d440000665243')
         };
 
         /**BOUTON AJOUTER AU PANIER */
+        let idTeddy = teddy._id;
         let buttonAdd = document.createElement('button');
-        buttonAdd.classList.add('btn', 'bg-white', 'w-100');
+        buttonAdd.classList.add('btn', 'bg-white', 'w-100', 'add-to-cart');
         buttonAdd.innerText = 'Ajouter au panier';
+        buttonAdd.setAttribute("data-id", idTeddy);
+        buttonAdd.setAttribute("data-name", teddy.name);
+        buttonAdd.setAttribute("data-price", teddy.price);
         botContainer.appendChild(buttonAdd);
 });
