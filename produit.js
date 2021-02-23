@@ -13,7 +13,6 @@ let colorCollection = {
 
 function getId() {
     const param = window.location.search;
-    console.log(param);
     const id = param.replace('?id=', '');
     return id;
 }
@@ -60,6 +59,7 @@ fetch('http://localhost:3000/api/teddies/' + getId())
         /**PRIX */
         function divide(price) {
             let division = price / 100;
+            division = division.toFixed(2);
             return division;
         }
 
@@ -97,10 +97,7 @@ fetch('http://localhost:3000/api/teddies/' + getId())
         /**BOUTON AJOUTER AU PANIER */
         let idTeddy = teddy._id;
         let buttonAdd = document.createElement('button');
-        buttonAdd.classList.add('btn', 'bg-white', 'w-100', 'add-to-cart');
+        buttonAdd.classList.add('btn', 'bg-white', 'w-100');
         buttonAdd.innerText = 'Ajouter au panier';
-        buttonAdd.setAttribute("data-id", idTeddy);
-        buttonAdd.setAttribute("data-name", teddy.name);
-        buttonAdd.setAttribute("data-price", teddy.price);
         botContainer.appendChild(buttonAdd);
 });

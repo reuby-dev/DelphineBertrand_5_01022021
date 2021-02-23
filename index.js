@@ -47,8 +47,9 @@ fetch('http://localhost:3000/api/teddies')
 
             /**PRICE */
             function divide(price) {
-                let divider = price / 100;
-                return divider;
+                let division = price / 100;
+                division = division.toFixed(2);
+                return division;
             }
 
             let price = document.createElement('p');
