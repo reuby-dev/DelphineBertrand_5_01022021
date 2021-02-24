@@ -26,11 +26,11 @@ a {
 
 table {
     background-color: white;
+    font-weight: 700;
 }
 
-.table thead th {
-    border: 1px solid black;
-    
+.table thead th, .table tbody td {
+    border: 1px solid black;   
 }
 
 th {

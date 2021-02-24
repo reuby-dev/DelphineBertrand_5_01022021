@@ -12,6 +12,10 @@ let colorCollection = {
     'Beige': '#C8AD7F',
 };
 
+//création du panier
+let cart = [];
+let currentLocalStorageCart = localStorage.getItem('cart');
+
 //récupère l'identifiant dans l'url
 function getId() {
     const param = window.location.search;
@@ -102,7 +106,8 @@ fetch('http://localhost:3000/api/teddies/' + getId())
         buttonAdd.innerText = 'Ajouter au panier';
         botContainer.appendChild(buttonAdd);
         buttonAdd.addEventListener('click',function(){
-            localStorage.setItem(teddy.name, JSON.stringify(teddy));
+            cart.push(teddy);
+            localStorage.setItem('cart', JSON.stringify(cart));
         });
 
 });
