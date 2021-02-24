@@ -24,6 +24,20 @@ a {
     color: black!important;
 }
 
+table {
+    background-color: white;
+}
+
+.table thead th {
+    border: 1px solid black;
+    
+}
+
+th {
+    width: 33%;
+    text-align: center;
+}
+
 .img-teddy {
     height: 200px;
 }

@@ -1,3 +1,4 @@
+//collection de couleur
 let colorCollection = {
     'Pale brown' : '#A27557',
     'Tan': '#D2B48C',
@@ -11,6 +12,7 @@ let colorCollection = {
     'Beige': '#C8AD7F',
 };
 
+//récupère l'identifiant dans l'url
 function getId() {
     const param = window.location.search;
     const id = param.replace('?id=', '');
@@ -95,9 +97,12 @@ fetch('http://localhost:3000/api/teddies/' + getId())
         };
 
         /**BOUTON AJOUTER AU PANIER */
-        let idTeddy = teddy._id;
         let buttonAdd = document.createElement('button');
-        buttonAdd.classList.add('btn', 'bg-white', 'w-100');
+        buttonAdd.classList.add('btn', 'bg-white', 'w-100', 'add-to-cart');
         buttonAdd.innerText = 'Ajouter au panier';
         botContainer.appendChild(buttonAdd);
+        buttonAdd.addEventListener('click',function(){
+            localStorage.setItem(teddy.name, JSON.stringify(teddy));
+        });
+
 });
