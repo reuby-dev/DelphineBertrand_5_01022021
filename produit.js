@@ -91,12 +91,12 @@ fetch('http://localhost:3000/api/teddies/' + getId())
 
         /**CHOIX DES COULEURS DYNAMIQUE */
         for (let i = 0; i < teddy.colors.length; i++) {
-        let colorChoice = document.createElement('div');
-        let idColor = teddy.colors[i]; //récupère la couleur contenue dans l'élément
-        let hexColor = colorCollection[idColor];
-        colorChoice.classList.add('color-choice');
-        colorChoice.style.backgroundColor = hexColor;
-        colorContainer.appendChild(colorChoice);
+            let colorChoice = document.createElement('div');
+            let idColor = teddy.colors[i]; //récupère la couleur contenue dans l'élément
+            let hexColor = colorCollection[idColor];
+            colorChoice.classList.add('color-choice');
+            colorChoice.style.backgroundColor = hexColor;
+            colorContainer.appendChild(colorChoice);
         };
 
         /**BOUTON AJOUTER AU PANIER */
@@ -109,18 +109,12 @@ fetch('http://localhost:3000/api/teddies/' + getId())
             //création du panier
             let cart = [];
 
-            //lis la valeur du localStorage
-            let readStorage = localStorage.getItem('cart');
-
             //vérifie si la valeur du localStorage existe
-            if (readStorage) {
-            //si elle existe, alors récupérer son contenu
-            cart = JSON.parse(localStorage.getItem('cart'));
-            }
+            if (localStorage.getItem('cart')) 
+                cart = JSON.parse(localStorage.getItem('cart')); //si elle existe, alors récupérer son contenu
             //dans tous les cas, ajouter le teddy au localStorage et le mettre à jour
             cart.push(teddy);
             localStorage.setItem('cart', JSON.stringify(cart));
                 
         });
-
 });
