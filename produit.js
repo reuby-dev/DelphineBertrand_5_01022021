@@ -14,14 +14,13 @@ let colorCollection = {
 
 //création du panier
 let cart = [];
-let currentLocalStorageCart = localStorage.getItem('cart');
 
 //récupère l'identifiant dans l'url
 function getId() {
     const param = window.location.search;
     const id = param.replace('?id=', '');
     return id;
-}
+};
 
 fetch('http://localhost:3000/api/teddies/' + getId())
     .then(function (response) {
@@ -106,8 +105,22 @@ fetch('http://localhost:3000/api/teddies/' + getId())
         buttonAdd.innerText = 'Ajouter au panier';
         botContainer.appendChild(buttonAdd);
         buttonAdd.addEventListener('click',function(){
+
+            //création du panier
+            let cart = [];
+
+            //lis la valeur du localStorage
+            let readStorage = localStorage.getItem('cart');
+
+            //vérifie si la valeur du localStorage existe
+            if (readStorage) {
+            //si elle existe, alors récupérer son contenu
+            cart = JSON.parse(localStorage.getItem('cart'));
+            }
+            //dans tous les cas, ajouter le teddy au localStorage et le mettre à jour
             cart.push(teddy);
             localStorage.setItem('cart', JSON.stringify(cart));
+                
         });
 
 });
