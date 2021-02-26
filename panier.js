@@ -1,13 +1,6 @@
 //récupère le contenu du localStorage
 let cartContent = JSON.parse(localStorage.getItem('cart'));
 
-//divise le prix par 100
-function divide(price) {
-  let division = price / 100;
-  division = division.toFixed(2);
-  return division;
-}
-
 for (let i=0; i < cartContent.length; i++) {
 
   /**Ligne parent du tableau récapitulatif du panier */
@@ -29,7 +22,7 @@ for (let i=0; i < cartContent.length; i++) {
 
   /**colonne quantité du produit */
   let colQty = document.createElement('td');
-  colQty.innerText = 1; //temporaire
+  colQty.innerText = cartContent[i].quantity; //temporaire
   tRow.appendChild(colQty);
 
 }

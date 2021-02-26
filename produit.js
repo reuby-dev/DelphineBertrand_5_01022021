@@ -107,10 +107,34 @@ function displaySheet(teddy) {
         //vérifie si la valeur du localStorage existe
         if (localStorage.getItem('cart')) 
             cart = JSON.parse(localStorage.getItem('cart')); //si elle existe, alors récupérer son contenu
-        //dans tous les cas, ajouter le teddy au localStorage et le mettre à jour
-        cart.push(teddy);
-        localStorage.setItem('cart', JSON.stringify(cart));
-            
+        
+        //crée l'objet à ajouter au panier
+        let newObject = { 
+            id : teddy._id,
+            name : teddy.name,
+            color : teddy.colors,
+            price : teddy.price,
+            quantity : 1
+        }
+
+        //si l'objet est présent dans le panier, incrémenter la quantité de 1 à chaque clic sur le bouton
+        let isPresent = false;
+        for (let i=0; i < cart.length; i++) {
+            if (newObject.id === cart[i].id) {
+                console.log('teddy déjà existant');
+                isPresent = true;
+                cart[i].quantity ++;
+            }
+        }
+
+        //si l'objet n'est pas dans le panier, le pousser dedans
+        if (isPresent === false) {
+            cart.push(newObject);            
+            console.log('nouveau teddy');
+        }
+
+        //renvoie le panier mis à jour
+        localStorage.setItem('cart', JSON.stringify(cart));        
     });
 }
 
