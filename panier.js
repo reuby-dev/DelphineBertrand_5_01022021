@@ -20,19 +20,18 @@ for (let i=0; i < cartContent.length; i++) {
   tRow.appendChild(colQty);
 
   /**icone plus dans col quantité */
-  let plusIcon = document.createElement('p');
+  let plusIcon = document.createElement('i');
   plusIcon.classList.add('fas', 'fa-plus', 'plus-icon');
   colQty.appendChild(plusIcon);
+
   plusIcon.addEventListener('click', function() {
     //quand 'click' sur +, augmente la quantité de 1
     cartContent[i].quantity++;
-    //calcule le prix total du produit
-    let priceProduct = cartContent[i].price * cartContent[i].quantity;
     //met à jour le panier
     localStorage.setItem('cart', JSON.stringify(cartContent));
     //met à jour l'affichage de la quantité et le prix
     productQuantity.innerText = cartContent[i].quantity;
-    colPrice.innerText = divide(priceProduct);
+    colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   });  
 
   /**Quantité du produit */
@@ -40,29 +39,39 @@ for (let i=0; i < cartContent.length; i++) {
   productQuantity.classList.add('quantity-product');
   productQuantity.innerText = cartContent[i].quantity;
   colQty.appendChild(productQuantity);
-
+  
   /**icone moins dans col quantité */
-  let minusIcon = document.createElement('p');
+  let minusIcon = document.createElement('i');
   minusIcon.classList.add('fas', 'fa-minus', 'minus-icon');
   colQty.appendChild(minusIcon);
+
   minusIcon.addEventListener('click', function() {
     //quand 'click' sur -, diminue la quantité de 1
     cartContent[i].quantity--;
-    //calcule le prix total du produit
-    let priceProduct = cartContent[i].price * cartContent[i].quantity;
-    localStorage.setItem('cart', JSON.stringify(cartContent));
+    //si la quantité du produit est inférieure ou égale à 0, supprimer le produit du localstorage et de l'affichage du tableau
+    if (cartContent[i].quantity <= 0) {
+      cartContent.splice([i], 1);
+      localStorage.setItem('cart', JSON.stringify(cartContent));
+      tBody.removeChild(tRow);
+    }
+    
     //met à jour l'affichage de la quantité et le prix
+    localStorage.setItem('cart', JSON.stringify(cartContent));
     productQuantity.innerText = cartContent[i].quantity;
-    colPrice.innerText = divide(priceProduct);
+    //calcule le prix total du produit
+    colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   });  
 
+  /**calcule le prix total du produit */
+  function calcPriceProduct(price, quantity) {
+    return price * quantity;
+  }
+
   /**colonne prix du produit */
-  let priceProduct = cartContent[i].price * cartContent[i].quantity;
   let colPrice = document.createElement('td');
-  colPrice.innerText = divide(priceProduct);
+  colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   tRow.appendChild(colPrice);
   
-  
-
-  
+  /**Total */
+ 
 }
