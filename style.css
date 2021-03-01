@@ -2,6 +2,10 @@ header, footer, .bg-prim {
     background:#F3E9F1;
 }
 
+.bg-prim-dark {
+    background-color: white !important;
+}
+
 h2 {
     font-weight: 650;
     font-size: 1.5rem;
@@ -41,6 +45,14 @@ table {
 th {
     width: 33%;
     text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+#quantity {
+    margin-bottom: 0;
 }
 
 .img-teddy {
@@ -93,12 +105,16 @@ th {
     border-radius: 10px !important;
 }
 
-.bg-prim-dark {
-    background-color: white !important;
-}
-
 .btn:hover {
     background:#dfd1db !important;
+}
+
+.plus-icon, .minus-icon {
+    cursor: pointer;
+}
+
+.quantity-product {
+    margin-bottom: 0;
 }
 
 .margin-b-20 {
