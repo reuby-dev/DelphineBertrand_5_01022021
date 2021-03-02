@@ -1,6 +1,12 @@
 //récupère le contenu du localStorage
 let cartContent = JSON.parse(localStorage.getItem('cart'));
 
+/**calcule le prix total du produit */
+function calcPriceProduct(price, quantity) {
+  return price * quantity;
+}
+
+/** boucle remplissage du tableau */
 for (let i=0; i < cartContent.length; i++) {
 
   /**Ligne parent du tableau récapitulatif du panier */
@@ -60,18 +66,24 @@ for (let i=0; i < cartContent.length; i++) {
     productQuantity.innerText = cartContent[i].quantity;
     //calcule le prix total du produit
     colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
-  });  
-
-  /**calcule le prix total du produit */
-  function calcPriceProduct(price, quantity) {
-    return price * quantity;
-  }
+  });
 
   /**colonne prix du produit */
   let colPrice = document.createElement('td');
   colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
-  tRow.appendChild(colPrice);
-  
-  /**Total */
- 
+  tRow.appendChild(colPrice); 
+}
+
+/**calcule le prix total du panier */
+
+
+/**Contrôle du formulaire*/
+function verification() {
+  // Récupérer la valeur des champs
+  let firstName = document.getElementById('first-name').value;
+  let name = document.getElementById('name').value;
+  let email = document.getElementById('idEmail').value;
+  let adress = document.getElementById('adress').value;
+  let postalCode = document.getElementById('postal-code').value;
+  let city = document.getElementById('city').value;
 }

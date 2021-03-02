@@ -76,46 +76,46 @@
             </div>
             <div class="col rounded bg-prim p-3 mb-5">
                 <h2 class="mb-3">Vos coordonnées</h2>
-                <form action="traitement.php" method="post">
+                <form action="" method="post" onsubmit=" return Verification()">
 
                     <div class="row">
                         <div class="col d-flex flex-column mb-3">
-                            <label for="first-name">Prénom</label>
-                            <input id="first-name" type="text" name="first-name" pattern="[a-z]{2,20}">
+                            <label for="first-name">Prénom <span class="text-danger">*</span></label>
+                            <input id="first-name" type="text" name="first-name" required pattern="[A-Za-z]{2,20}">
                         </div>
 
                         <div class="col d-flex flex-column mb-3">
-                            <label for="name">Nom</label>
-                            <input id="name" type="text" name="name" pattern="[a-z]{2,20}">
+                            <label for="name">Nom <span class="text-danger">*</span></label>
+                            <input id="name" type="text" name="name" required pattern="[A-Za-z]{2,20}">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col d-flex flex-column mb-3">
-                            <label for="email">Adresse e-mail</label>
-                            <input id="email" type="email" name="email">
+                            <label for="email">Adresse e-mail <span class="text-danger">*</span></label>
+                            <input id="email" type="email" required name="email">
                         </div>
 
                         <div class="col d-flex flex-column mb-3">
-                            <label for="adress">Adresse</label>
-                            <input id="adress" type="text" name="adress">
+                            <label for="adress">Adresse <span class="text-danger">*</span></label>
+                            <input id="adress" type="text" name="adress" required pattern="[A-Za-z0-9\,]{2,50}">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col d-flex flex-column mb-3">
-                            <label for="postal-code">Code postal</label>
-                            <input id="postal-code" type="text" name="postal-code" pattern="[0-9]{5}">
+                            <label for="postal-code">Code postal <span class="text-danger">*</span></label>
+                            <input id="postal-code" type="text" name="postal-code" required pattern="[0-9]{5}" >
                         </div>
 
                         <div class="col d-flex flex-column mb-3">
-                            <label for="city">Ville</label>
-                            <input id="city" type="text" name="city" pattern="[a-z]{2,30}">
+                            <label for="city">Ville <span class="text-danger">*</span></label>
+                            <input id="city" type="text" name="city" required pattern="[A-Za-z\-\s]{2,50}">
                         </div>
                     </div>
 
-                    <a href="validation.html">
-                        <button type="submit" form="form" value="Submit" class="btn bg-white w-100 mt-3"
+                    <a href="">
+                        <button type="submit" form="form" value="submit" class="btn bg-white w-100 mt-3"
                             id="confirm-command">Procéder au
                             paiement</button></a>
                 </form>

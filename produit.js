@@ -133,8 +133,13 @@ function displaySheet(teddy) {
             console.log('nouveau teddy');
         }
 
+        //fait apparaitre l'alerte de redirection
+        let alertRedirection = document.getElementById('bg-alert');
+        alertRedirection.style.display= 'block';
+
         //renvoie le panier mis à jour
-        localStorage.setItem('cart', JSON.stringify(cart));        
+        localStorage.setItem('cart', JSON.stringify(cart));   
+        
     });
 }
 
