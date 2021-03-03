@@ -1,3 +1,11 @@
+//requête récupération du produit
+fetch('http://localhost:3000/api/teddies/' + getId())
+    .then(function (response) {
+        return response.json();
+    }).then(function (teddy) {
+        displaySheet(teddy);   
+});
+
 //collection de couleur
 let colorCollection = {
     'Pale brown' : '#A27557',
@@ -14,66 +22,25 @@ let colorCollection = {
 
 //création de la fiche produit
 function displaySheet(teddy) {
-    /**ROW */
-    let rowProduct = document.getElementById('product-card'); //récupère la ligne du DOM
-
-    /** COL IMAGE PRODUIT */
-    let colImg = document.createElement('div');//crée la colonne contenant l'image du produit
-    colImg.classList.add('col-sm-6', 'margin-b-20'); //ajoute les classes
-    rowProduct.appendChild(colImg);
 
     /** IMG */
-    let imgProduct = document.createElement('img');
-    imgProduct.src = teddy.imageUrl; //prend l'image concernée
-    colImg.appendChild(imgProduct);
-
-    /**COL DESCRIPTION PRODUIT */
-    let colDescription = document.createElement('div');
-    colDescription.classList.add('col', 'd-flex', 'flex-column', 'justify-content-between');
-    rowProduct.appendChild(colDescription);
-
-    /**CONTENEUR PARTIE HAUTE DE LA DESCRIPTION DU PRODUIT */
-    let topContainer = document.createElement('div');
-    topContainer.id = 'top-container'; //définit l'id
-    colDescription.appendChild(topContainer);
-
-    /**CONTENEUR TITRE ET PRIX */
-    let titlePriceContainer = document.createElement('div');
-    titlePriceContainer.classList.add('d-flex', 'justify-content-between');
-    topContainer.appendChild(titlePriceContainer);
+    let imgProduct = document.getElementById('img-product-sheet');
+    imgProduct.src = teddy.imageUrl; //récupère l'image du produit
 
     /**TITRE */
-    let name = document.createElement('h2');
-    name.innerText = teddy.name;
-    titlePriceContainer.appendChild(name);
+    let name = document.getElementById('name-product-sheet');
+    name.innerText = teddy.name; //récupère le nom du produit
 
     /**PRIX */
-    let price = document.createElement('p');
-    price.classList.add('price', 'bg-prim-dark', 'rounded');
+    let price = document.getElementById('price-product-sheet');
     price.innerText = divide(teddy.price) + ' €';
-    titlePriceContainer.appendChild(price);
     
     /**DESCRIPTION DU PRODUIT */
-    let descriptionProduct = document.createElement('p');
+    let descriptionProduct = document.getElementById('description-product-sheet');
     descriptionProduct.innerText = teddy.description;
-    topContainer.appendChild(descriptionProduct);
-
-    /**CONTENEUR PARTIE BASSE DE LA DESCRIPTION DU PRODUIT*/
-    let botContainer = document.createElement('div');
-    botContainer.id = 'bottom-container';
-    colDescription.appendChild(botContainer);
-
-    /**INSTRUCTION COULEUR */
-    let instruction = document.createElement('h3');
-    instruction.innerText = 'Sélectionnez une couleur pour votre produit :';
-    botContainer.appendChild(instruction);
-
-    /**CONTENEUR CHOIX DES COULEURS */
-    let colorContainer = document.createElement('div');
-    colorContainer.classList.add('d-flex', 'justify-content-between', 'mb-3', 'mt-3');
-    botContainer.appendChild(colorContainer);
 
     /**CHOIX DES COULEURS DYNAMIQUE */
+    let colorContainer = document.getElementById('color-container')
     for (let i = 0; i < teddy.colors.length; i++) { 
         let colorChoice = document.createElement('div'); //pour chaque nom de couleur contenu dans la liste colors de l'api, ajouter une div
         let idColor = teddy.colors[i]; //récupère le nom de la couleur contenu dans l'élément teddy de l'api
@@ -82,7 +49,7 @@ function displaySheet(teddy) {
         colorChoice.style.backgroundColor = hexColor; //crée un style background color dynamique, lié au code hexa créé dans le tableau associatif
         colorContainer.appendChild(colorChoice);
 
-        //taille dynamique
+        //taille dynamique des choix des couleurs
         if (teddy.colors.length === 1) {
             colorChoice.style.width = '100%';
         } else if (teddy.colors.length === 2) {
@@ -95,10 +62,7 @@ function displaySheet(teddy) {
     };
 
     /**BOUTON AJOUTER AU PANIER */
-    let buttonAdd = document.createElement('button');
-    buttonAdd.classList.add('btn', 'bg-white', 'w-100', 'add-to-cart');
-    buttonAdd.innerText = 'Ajouter au panier';
-    botContainer.appendChild(buttonAdd);
+    let buttonAdd = document.getElementById('add-to-cart');
     buttonAdd.addEventListener('click',function(){
 
         //création du panier
@@ -134,7 +98,7 @@ function displaySheet(teddy) {
         }
 
         //fait apparaitre l'alerte de redirection
-        let alertRedirection = document.getElementById('bg-alert');
+        let alertRedirection = document.getElementById('bg-box-alert');
         alertRedirection.style.display= 'block';
 
         //renvoie le panier mis à jour
@@ -142,17 +106,3 @@ function displaySheet(teddy) {
         
     });
 }
-
-//récupère l'identifiant dans l'url
-function getId() {
-    const param = window.location.search;
-    const id = param.replace('?id=', '');
-    return id;
-};
-
-fetch('http://localhost:3000/api/teddies/' + getId())
-    .then(function (response) {
-        return response.json();
-    }).then(function (teddy) {
-        displaySheet(teddy);   
-});

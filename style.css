@@ -117,7 +117,7 @@ td {
     margin-bottom: 0;
 }
 
-#bg-alert {
+#bg-box-alert {
     position: fixed;
     display:none;
     width: 100%;

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-    <div id="bg-alert">
+    <div id="bg-box-alert">
         <div class = "box-alert">
             <p>Votre article a bien été ajouté au panier. <br> Vous désirez :</p>
             <div class="container-button">
@@ -59,26 +59,25 @@
 
     <main class="container mb-5 rounded p-3 bg-prim">
         <div class="row" id="product-card">
-            <!--Modele carte produit // insérer ici fiche produit dynamique JS
             <div class="col-sm-6 margin-b-20">
-                <img src='img' />
+                <img id="img-product-sheet"/>
             </div>
             <div class="col d-flex flex-column justify-content-between">
                 <div id="top-container">
                     <div class="d-flex justify-content-between">
-                        <h2>Teddy name</h2>
-                        <p class="price bg-prim-dark rounded">23.00</p>
+                        <h2 id ="name-product-sheet">Teddy name</h2>
+                        <p id="price-product-sheet" class="price bg-prim-dark rounded">00.00</p>
                     </div>
-                    <p>Description</p>
+                    <p id ="description-product-sheet">Description</p>
                 </div>
                 <div id="bottom-container">
-                    <div class="d-flex justify-content-between mb-3">
-                        <div class="color-choice"></div>
+                    <div>
+                        <h3>Sélectionnez une couleur pour votre produit :</h3>
+                        <div id="color-container" class="d-flex justify-content-between mb-3 mt-3"></div>
                     </div>
-                    <button class="btn bg-white w-100">Ajouter au panier</button>
+                    <button id="add-to-cart" class="btn bg-white w-100">Ajouter au panier</button>
                 </div>
             </div>
-            -->
         </div>
 
     </main>
