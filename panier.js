@@ -1,11 +1,6 @@
 //récupère le contenu du localStorage
 let cartContent = JSON.parse(localStorage.getItem('cart'));
 
-/**calcule le prix total du produit */
-function calcPriceProduct(price, quantity) {
-  return price * quantity;
-}
-
 /** boucle remplissage du tableau */
 for (let i=0; i < cartContent.length; i++) {
 
@@ -31,17 +26,10 @@ for (let i=0; i < cartContent.length; i++) {
   colQty.appendChild(plusIcon);
 
   plusIcon.addEventListener('click', function() {
-    //quand 'click' sur +, augmente la quantité de 1
-    cartContent[i].quantity++;
-    //met à jour le panier
-    localStorage.setItem('cart', JSON.stringify(cartContent));
-    //met à jour l'affichage de la quantité, le prix des articles et le prix total du panier
-    productQuantity.innerText = cartContent[i].quantity;
-    subTotal.innerText = divide(getSubTotal(cartContent));
-    colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
+    comportmentIcon(+1, cartContent, i, productQuantity, colPrice);
   });  
 
-  /**Quantité du produit */
+  /**Quantité du produit à l'arrivée sur la page */
   let productQuantity = document.createElement('p');
   productQuantity.classList.add('quantity-product');
   productQuantity.innerText = cartContent[i].quantity;
@@ -53,41 +41,13 @@ for (let i=0; i < cartContent.length; i++) {
   colQty.appendChild(minusIcon);
 
   minusIcon.addEventListener('click', function() {
-    //quand 'click' sur -, diminue la quantité de 1
-    cartContent[i].quantity--;
-    //si la quantité du produit est inférieure ou égale à 0, supprimer le produit du localstorage et de l'affichage du tableau
-    if (cartContent[i].quantity <= 0) {
-      cartContent.splice([i], 1);
-      localStorage.setItem('cart', JSON.stringify(cartContent));
-      tBody.removeChild(tRow);
-    }
-    
-    //met à jour l'affichage de la quantité le prix des articles et le prix total du panier
-    localStorage.setItem('cart', JSON.stringify(cartContent));
-    productQuantity.innerText = cartContent[i].quantity;
-    subTotal.innerText = divide(getSubTotal(cartContent));
-    //calcule le prix total du produit
-    colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
+    comportmentIcon(-1, cartContent, i, productQuantity, colPrice);
   });
 
   /**colonne prix du produit */
   let colPrice = document.createElement('td');
   colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   tRow.appendChild(colPrice); 
-}
-
-/**calcule le prix total du panier */
-function getSubTotal(cartContent) {
-
-  //initialise la variable du prix total
-  let total = 0;
-
-  //additionne les prix entre eux
-  for (let i = 0; i < cartContent.length; i++) {
-    let allPrices =  calcPriceProduct(cartContent[i].price, cartContent[i].quantity);
-    total += allPrices;
-  }
-  return total;
 }
 
 //ajoute le total au span 'subtotal' à l'arrivée sur la page panier
@@ -120,48 +80,33 @@ buttonConfirm.addEventListener('click', function(){
   if (firstName === "") {
     let firstNameContainer = document.getElementById('first-name-container');
     let emptyFirstName = document.createElement('p');
-    emptyFirstName.classList.add('text-danger', 'fs-6', 'mb-0');
-    emptyFirstName.innerText = 'Ce champ est obligatoire.';
-    firstNameContainer.appendChild(emptyFirstName);    
+    messageAlert(emptyFirstName, firstNameContainer)
   }
   if (lastName === "") {
     let lastNameContainer = document.getElementById('last-name-container');
     let emptyLastName = document.createElement('p');
-    emptyLastName.classList.add('text-danger', 'fs-6', 'mb-0');
-    emptyLastName.innerText = 'Ce champ est obligatoire.';
-    lastNameContainer.appendChild(emptyLastName);    
+    messageAlert(emptyLastName, lastNameContainer)  
   }
   if (email === "") {
     let emailContainer = document.getElementById('email-container');
     let emptyEmail = document.createElement('p');
-    emptyEmail.classList.add('text-danger', 'fs-6', 'mb-0');
-    emptyEmail.innerText = 'Ce champ est obligatoire.';
-    emailContainer.appendChild(emptyEmail);    
+    messageAlert(emptyEmail, emailContainer)
   }
   if (address === "") {
     let addressContainer = document.getElementById('address-container');
     let emptyAddress = document.createElement('p');
-    emptyAddress.classList.add('text-danger', 'fs-6', 'mb-0');
-    emptyAddress.innerText = 'Ce champ est obligatoire.';
-    addressContainer.appendChild(emptyAddress);    
+    messageAlert(emptyAddress, addressContainer)   
   }
   if (postalCode === "") {
     let postalCodeContainer = document.getElementById('postal-code-container');
     let emptyPostalCode = document.createElement('p');
-    emptyPostalCode.classList.add('text-danger', 'fs-6', 'mb-0');
-    emptyPostalCode.innerText = 'Ce champ est obligatoire.';
-    postalCodeContainer.appendChild(emptyPostalCode);    
+    messageAlert(emptyPostalCode, postalCodeContainer)   
   }
   if (city === "") {
     let cityContainer = document.getElementById('city-container');
     let emptyCity = document.createElement('p');
-    emptyCity.classList.add('text-danger', 'fs-6', 'mb-0');
-    emptyCity.innerText = 'Ce champ est obligatoire.';
-    cityContainer.appendChild(emptyCity);    
-  }
-
-  let myHeaders = new Headers();
-  myHeaders.append("Content-Type", "application/json");
+    messageAlert(emptyCity, cityContainer) 
+  }  
   
   //récupère les identifiants des produits du panier
   let idProducts=[];
@@ -169,6 +114,9 @@ buttonConfirm.addEventListener('click', function(){
     result = cartContent[i].id;
     idProducts.push(result);
   }
+
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
 
   let raw = JSON.stringify({"contact":{"firstName":firstName,"lastName":lastName,"address":address,"city":city,"email":email},"products":[idProducts]});
 
@@ -184,5 +132,3 @@ fetch("http://localhost:3000/api/teddies/order/", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 })
-
-
