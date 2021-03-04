@@ -32,7 +32,7 @@ for (let i=0; i < cartContent.length; i++) {
     localStorage.setItem('cart', JSON.stringify(cartContent));
     //met à jour l'affichage de la quantité, le prix des articles et le prix total du panier
     productQuantity.innerText = cartContent[i].quantity;
-    subTotal.innerText = divide(getSubTotal(cartContent));
+    displaySubTotal (cartContent);
     colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   });  
 
@@ -60,7 +60,7 @@ for (let i=0; i < cartContent.length; i++) {
     //met à jour l'affichage de la quantité le prix des articles et le prix total du panier
     localStorage.setItem('cart', JSON.stringify(cartContent));
     productQuantity.innerText = cartContent[i].quantity;
-    subTotal.innerText = divide(getSubTotal(cartContent));
+    displaySubTotal (cartContent);
     //calcule le prix total du produit
     colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   });
@@ -73,8 +73,7 @@ for (let i=0; i < cartContent.length; i++) {
 
 
 /**AJOUTE LE TOTAL AU SPAN SUBTOTAL A L'ARRIVEE SUR LA PAGE DU PANIER*/
-let subTotal = document.getElementById('subtotal');
-subTotal.innerText = divide(getSubTotal(cartContent));
+displaySubTotal (cartContent);
 
 
 /**REQUETE D'ENVOI DE LA COMMANDE */
@@ -151,6 +150,7 @@ buttonConfirm.addEventListener('click', function(){
     idProducts.push(result);
   }
 
+  /**REQUETE D'ENVOI */
   let myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
 

@@ -6,8 +6,13 @@ header, footer, .bg-prim {
     background-color: white !important;
 }
 
+h1 {
+    font-weight: 700;
+    font size : 1.7rem;
+}
+
 h2 {
-    font-weight: 650;
+    font-weight: 700;
     font-size: 1.5rem;
 }
 
@@ -115,6 +120,10 @@ td {
 
 .quantity-product {
     margin-bottom: 0;
+}
+
+#subtotal {
+    font-weight: 700;
 }
 
 #bg-box-alert {

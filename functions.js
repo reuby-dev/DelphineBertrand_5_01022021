@@ -33,6 +33,12 @@ function getSubTotal(cartContent) {
     return total;
 }
 
+/**AJOUTE LE SUBTOTAL AU SPAN */
+function displaySubTotal (cartContent) {
+    let subTotal = document.getElementById('subtotal');
+    subTotal.innerText = divide(getSubTotal(cartContent));
+}
+
 /**MESSAGE D'ALERTE POUR CHAMP VIDE */
 function alertMessage(emptyChildren, parentContainer) {
     emptyChildren.classList.add('text-danger', 'mb-0');
