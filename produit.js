@@ -41,26 +41,7 @@ function displaySheet(teddy) {
     descriptionProduct.innerText = teddy.description;
 
     /**CHOIX DES COULEURS DYNAMIQUE */
-    let colorContainer = document.getElementById('color-container')
-    for (let i = 0; i < teddy.colors.length; i++) { 
-        let colorChoice = document.createElement('div'); //pour chaque nom de couleur contenu dans la liste colors de l'api, ajouter une div
-        let idColor = teddy.colors[i]; //récupère le nom de la couleur contenu dans l'élément teddy de l'api
-        let hexColor = colorCollection[idColor]; //associe le nom de la couleur à un code hexadécimal
-        colorChoice.classList.add('color-choice');
-        colorChoice.style.backgroundColor = hexColor; //crée un style background color dynamique, lié au code hexa créé dans le tableau associatif
-        colorContainer.appendChild(colorChoice);
-
-        //taille dynamique des choix des couleurs
-        if (teddy.colors.length === 1) {
-            colorChoice.style.width = '100%';
-        } else if (teddy.colors.length === 2) {
-            colorChoice.style.width = '50%';
-        } else if (teddy.colors.length === 3) {
-            colorChoice.style.width = '30%';
-        } else if (teddy.colors.length > 3) {
-            colorChoice.style.width = '20%';
-        }
-    };
+    choiceColor(teddy);
 
     /**BOUTON AJOUTER AU PANIER */
     let buttonAdd = document.getElementById('add-to-cart');
@@ -73,30 +54,8 @@ function displaySheet(teddy) {
         if (localStorage.getItem('cart')) 
             cart = JSON.parse(localStorage.getItem('cart')); //si elle existe, alors récupérer son contenu
         
-        //crée l'objet à ajouter au panier
-        let newObject = { 
-            id : teddy._id,
-            name : teddy.name,
-            color : teddy.colors,
-            price : teddy.price,
-            quantity : 1
-        }
-
-        //si l'objet est présent dans le panier, incrémenter la quantité de 1 à chaque clic sur le bouton
-        let isPresent = false;
-        for (let i=0; i < cart.length; i++) {
-            if (newObject.id === cart[i].id) {
-                console.log('teddy déjà existant');
-                isPresent = true;
-                cart[i].quantity ++;
-            }
-        }
-
-        //si l'objet n'est pas dans le panier, le pousser dedans
-        if (isPresent === false) {
-            cart.push(newObject);            
-            console.log('nouveau teddy');
-        }
+        //crée l'objet à ajouter au panier et l'ajoute au localstorage
+        addToCart(teddy, cart);
 
         //fait apparaitre l'alerte de redirection
         let alertRedirection = document.getElementById('bg-box-alert');

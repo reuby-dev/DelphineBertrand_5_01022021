@@ -71,7 +71,7 @@
                     </tbody>
                 </table>
 
-                <p class ="fw-bold">Total : <span id ="subtotal"></span>€</p>
+                <p class="fw-bold">Total : <span id="subtotal"></span>€</p>
 
             </div>
             <div class="col rounded bg-prim p-3 mb-5">
@@ -81,7 +81,8 @@
                     <div class="row">
                         <div id="first-name-container" class="col d-flex flex-column mb-3">
                             <label for="first-name">Prénom <span class="text-danger">*</span></label>
-                            <input id="first-name" type="text" name="first-name" pattern="[A-Za-z]{2,20}" aria-required="true" >
+                            <input id="first-name" type="text" name="first-name" pattern="[A-Za-z]{2,20}"
+                                aria-required="true">
                         </div>
 
                         <div id="last-name-container" class="col d-flex flex-column mb-3">
@@ -105,7 +106,7 @@
                     <div class="row">
                         <div id="postal-code-container" class="col d-flex flex-column mb-3">
                             <label for="postal-code">Code postal <span class="text-danger">*</span></label>
-                            <input id="postal-code" type="text" name="postal-code" required pattern="[0-9]{5}" >
+                            <input id="postal-code" type="text" name="postal-code" required pattern="[0-9]{5}">
                         </div>
 
                         <div id="city-container" class="col d-flex flex-column mb-3">
@@ -114,17 +115,18 @@
                         </div>
                     </div>
 
-                    
+
+                    <a href="validation.html">
                         <button type="submit" form="form" value="submit" class="btn bg-white w-100 mt-3"
-                            id="confirm-command">Procéder au
-                            paiement</button>
+                            id="confirm-command">Procéder au paiement</button>
+                    </a>
                 </form>
             </div>
         </div>
     </main>
 
     <script src="functions.js"></script>
-    <script src ="panier.js"></script>
+    <script src="panier.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
