@@ -52,13 +52,16 @@ for (let i=0; i < cartContent.length; i++) {
     cartContent[i].quantity--;
     //si la quantité du produit est inférieure ou égale à 0, supprimer le produit du localstorage et de l'affichage du tableau
     if (cartContent[i].quantity <= 0) {
-      cartContent.splice([i], 1);
+      cartContent.splice([i].id, 1);
       localStorage.setItem('cart', JSON.stringify(cartContent));
       tBody.removeChild(tRow);
     }
     
     //met à jour l'affichage de la quantité le prix des articles et le prix total du panier
     localStorage.setItem('cart', JSON.stringify(cartContent));
+    console.log(i);
+    console.log(cartContent[i]);
+    
     productQuantity.innerText = cartContent[i].quantity;
     displaySubTotal (cartContent);
     //calcule le prix total du produit
@@ -70,7 +73,6 @@ for (let i=0; i < cartContent.length; i++) {
   colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   tRow.appendChild(colPrice); 
 }
-
 
 /**AJOUTE LE TOTAL AU SPAN SUBTOTAL A L'ARRIVEE SUR LA PAGE DU PANIER*/
 displaySubTotal (cartContent);
@@ -163,10 +165,22 @@ buttonConfirm.addEventListener('click', function(){
     redirect: 'follow'
   };
 
-fetch("http://localhost:3000/api/teddies/order/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  function saveOrderId(result) {
+    //récupère l'order Id depuis la réponse de l'api
+    let id = result.orderId;  
+
+    //stocke l'order Id dans le local storage pour pouvoir le récupérer dans la page de validation
+    let orderId = [];
+    orderId.push(id);
+    localStorage.setItem('orderId', JSON.stringify(orderId));
+  }
+
+
+  fetch('http://localhost:3000/api/teddies/order/', requestOptions)
+  .then(function (response) {
+      return response.json();
+  }).then(function (result) {
+      console.log(result);  
+      saveOrderId(result);
+  })
 })
-
-

@@ -22,7 +22,7 @@ function displayCards(cards) {
         /*IMG*/
         let imgProduct = document.createElement('img');
         imgProduct.src = teddy.imageUrl; //choisi l'image correspondante dynamiquement
-        imgProduct.classList.add('card-img-top', 'img-teddy'); 
+        imgProduct.classList.add('card-img-top', 'img-teddy-card'); 
         card.appendChild(imgProduct);
         
         /*CARD BODY */

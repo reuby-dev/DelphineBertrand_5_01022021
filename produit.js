@@ -25,6 +25,7 @@ function displaySheet(teddy) {
 
     /** IMG */
     let imgProduct = document.getElementById('img-product-sheet');
+    imgProduct.classList.add('img-teddy-product');
     imgProduct.src = teddy.imageUrl; //récupère l'image du produit
 
     /**TITRE */
