@@ -52,8 +52,7 @@ for (let i=0; i < cartContent.length; i++) {
     cartContent[i].quantity--;
     //si la quantité du produit est inférieure ou égale à 0, supprimer le produit du localstorage et de l'affichage du tableau
     if (cartContent[i].quantity <= 0) {
-      
-      cartContent.splice([i], 1);
+      cartContent.splice([i].id, 1);
       localStorage.setItem('cart', JSON.stringify(cartContent));
       tBody.removeChild(tRow);
     }

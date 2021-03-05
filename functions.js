@@ -7,6 +7,30 @@ function getId() {
     return id;
 }
 
+/**CHOIX DES COULEURS DYNAMIQUE */
+function choiceColor(item) {
+    let colorContainer = document.getElementById('color-container')
+    for (let i = 0; i < item.colors.length; i++) { 
+        let colorChoice = document.createElement('div'); //pour chaque nom de couleur contenu dans la liste colors de l'api, ajouter une div
+        let idColor = item.colors[i]; //récupère le nom de la couleur contenu dans l'élément teddy de l'api
+        let hexColor = colorCollection[idColor]; //associe le nom de la couleur à un code hexadécimal
+        colorChoice.classList.add('color-choice');
+        colorChoice.style.backgroundColor = hexColor; //crée un style background color dynamique, lié au code hexa créé dans le tableau associatif
+        colorContainer.appendChild(colorChoice);
+
+        //taille dynamique des choix des couleurs
+        if (item.colors.length === 1) {
+            colorChoice.style.width = '100%';
+        } else if (item.colors.length === 2) {
+            colorChoice.style.width = '50%';
+        } else if (item.colors.length === 3) {
+            colorChoice.style.width = '30%';
+        } else if (item.colors.length > 3) {
+            colorChoice.style.width = '20%';
+        }
+    };
+}
+
 /**CREE UN NOUVEL OBJET ET L'AJOUTE AU PANIER */
 function addToCart(item, cart) {
     let newObject = { 
@@ -64,30 +88,6 @@ function getSubTotal(cartContent) {
 function displaySubTotal (cartContent) {
     let subTotal = document.getElementById('subtotal');
     subTotal.innerText = divide(getSubTotal(cartContent));
-}
-
-/**CHOIX DES COULEURS DYNAMIQUE */
-function choiceColor(item) {
-    let colorContainer = document.getElementById('color-container')
-    for (let i = 0; i < item.colors.length; i++) { 
-        let colorChoice = document.createElement('div'); //pour chaque nom de couleur contenu dans la liste colors de l'api, ajouter une div
-        let idColor = item.colors[i]; //récupère le nom de la couleur contenu dans l'élément teddy de l'api
-        let hexColor = colorCollection[idColor]; //associe le nom de la couleur à un code hexadécimal
-        colorChoice.classList.add('color-choice');
-        colorChoice.style.backgroundColor = hexColor; //crée un style background color dynamique, lié au code hexa créé dans le tableau associatif
-        colorContainer.appendChild(colorChoice);
-
-        //taille dynamique des choix des couleurs
-        if (item.colors.length === 1) {
-            colorChoice.style.width = '100%';
-        } else if (item.colors.length === 2) {
-            colorChoice.style.width = '50%';
-        } else if (item.colors.length === 3) {
-            colorChoice.style.width = '30%';
-        } else if (item.colors.length > 3) {
-            colorChoice.style.width = '20%';
-        }
-    };
 }
 
 /**MESSAGE D'ALERTE POUR CHAMP VIDE */

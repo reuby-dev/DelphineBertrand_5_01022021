@@ -1,3 +1,5 @@
+/*REGLES GENERALES*/
+
 header, footer, .bg-prim {
     background:#F3E9F1;
 }
@@ -50,15 +52,52 @@ td {
     text-align: center;
 }
 
+.btn {
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background:#dfd1db !important;
+}
+
+.navbar-brand {
+    height: 80px;
+}
+
+.rounded {
+    border-radius: 10px !important;
+}
+
+.margin-b-20 {
+    margin-bottom : 20px;
+}
+
+#subtotal, #display-order-id {
+    font-weight: 700;
+}
+
+/*CONTAINER*/
+.container {
+    max-width: 1400px;
+}
+
+.container-button {
+    margin: auto;
+}
+
+/*LOGO*/
+
 #logo {
     height: 100%;
     object-fit: cover;
 }
 
-#quantity {
-    margin-bottom: 0;
+/*CAROUSEL*/
+.carousel-item {
+    height: 450px;
 }
 
+/*IMAGES*/
 .img-teddy-card {
     width: 100%;
     object-fit: cover;
@@ -71,21 +110,20 @@ td {
     object-fit: cover;
 }
 
-.container {
-    max-width: 1400px;
+/*QUANTITE*/
+#quantity {
+    margin-bottom: 0;
 }
 
-.navbar-brand {
-    height: 80px;
+.quantity-product {
+    margin-bottom: 0;
 }
 
-.carousel-item {
-    height: 450px;
+.plus-icon, .minus-icon {
+    cursor: pointer;
 }
 
-.btn {
-    transition: background 0.3s ease-in-out;
-}
+/*CARD*/
 
 .card {
     border-radius: 10px;
@@ -93,10 +131,17 @@ td {
     overflow: hidden;
 }
 
+.card:hover {
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, .1);
+}
+
+/*PRICE*/
 .price {
     font-weight: 700;
     padding: 5px;
 }
+
+/*COLOR CHOICE*/
 
 .color-choice {
     cursor: pointer;
@@ -109,30 +154,7 @@ td {
     transform: scale(1.1);
 }
 
-.card:hover {
-    box-shadow: 5px 5px 7px rgba(0, 0, 0, .1);
-}
-
-.rounded {
-    border-radius: 10px !important;
-}
-
-.btn:hover {
-    background:#dfd1db !important;
-}
-
-.plus-icon, .minus-icon {
-    cursor: pointer;
-}
-
-.quantity-product {
-    margin-bottom: 0;
-}
-
-#subtotal, #display-order-id {
-    font-weight: 700;
-}
-
+/*BOITE DE REDIRECTION*/
 #bg-box-alert {
     position: fixed;
     display:none;
@@ -154,10 +176,6 @@ td {
     width: 50%;
 }
 
-.container-button {
-    margin: auto;
-}
-
 .button-alert {
     padding: 10px;
     background-color: white;
@@ -170,12 +188,14 @@ td {
     background:#c7b6c2;
 }
 
-.margin-b-20 {
-    margin-bottom : 20px;
-}
+/*MEDIA QUERIES*/
 
 @media (min-width: 575.98px) { 
     .margin-b-20 {
         margin-bottom : 0;
+    }
+
+    #container-cart {
+        margin-right: 20px;
     }
  }
