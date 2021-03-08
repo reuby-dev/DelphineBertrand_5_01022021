@@ -1,7 +1,7 @@
 /**RECUPERE LE CONTENU DU LOCAL STORAGE*/
 let cartContent = JSON.parse(localStorage.getItem('cart'));
 
-/** BOUCLE REMPLISSAGE DU TABLEAU */
+/** boucle remplissage du tableau */
 for (let i=0; i < cartContent.length; i++) {
 
   //Ligne parent du tableau récapitulatif du panier
