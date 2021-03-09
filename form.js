@@ -1,4 +1,4 @@
-//sauvegarde l'orderId dans le local storage
+/**SAUVEGARDE L'ORDER ID DANS LE LOCAL STORAGE */
 function saveOrderId(result) {
     //récupère l'order Id depuis la réponse de l'api
     let id = result.orderId;  
@@ -9,7 +9,7 @@ function saveOrderId(result) {
     localStorage.setItem('orderId', JSON.stringify(orderId));
   }
 
-//fonction validation des champs
+/**VALIDATION DES CHAMPS */
 function validateField (fieldValue, parentContainerId) {
     // Nettoyer les messages d'erreurs
     let parentContainer = document.getElementById(parentContainerId);
@@ -33,7 +33,7 @@ function validateField (fieldValue, parentContainerId) {
     return error;
 }
 
-//fonction validation du panier
+/**VALIDATION DU PANIER */
 function validateCart(cartValue) {
     let error = false;
     let containerCart = document.getElementById('container-cart');
@@ -56,6 +56,7 @@ function validateCart(cartValue) {
   return error;
 }
 
+/**VALIDATION DU FORMULAIRE */
 function validateForm (cartContent) {
 
     //Récupère les valeurs des champs du formulaire
@@ -109,7 +110,6 @@ function validateForm (cartContent) {
 
 /**REQUETE D'ENVOI DE LA COMMANDE */
 
-//quand on clique sur le bouton de confirmation, envoie la requete
 let buttonConfirm = document.getElementById('confirm-command');
 buttonConfirm.addEventListener('click', function(){
     //recupère le contenu du local storage
@@ -130,12 +130,12 @@ buttonConfirm.addEventListener('click', function(){
 
     /**REQUETE D'ENVOI */
     //Récupère les valeurs des champs du formulaire
-let firstName = document.getElementById('first-name').value;
-let lastName = document.getElementById('last-name').value;
-let email = document.getElementById('email').value;
-let address = document.getElementById('address').value;
-let postalCode = document.getElementById('postal-code').value;
-let city = document.getElementById('city').value;
+    let firstName = document.getElementById('first-name').value;
+    let lastName = document.getElementById('last-name').value;
+    let email = document.getElementById('email').value;
+    let address = document.getElementById('address').value;
+    let postalCode = document.getElementById('postal-code').value;
+    let city = document.getElementById('city').value;
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
