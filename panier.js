@@ -1,7 +1,7 @@
 /**RECUPERE LE CONTENU DU LOCAL STORAGE*/
 let cartContent = JSON.parse(localStorage.getItem('cart'));
 
-/** boucle remplissage du tableau */
+/** BOUCLE REMPLISSAGE DU TABLEAU */
 for (let i=0; i < cartContent.length; i++) {
 
   //Ligne parent du tableau récapitulatif du panier
@@ -25,18 +25,18 @@ for (let i=0; i < cartContent.length; i++) {
   plusIcon.classList.add('fas', 'fa-plus', 'plus-icon');
   colQty.appendChild(plusIcon);
 
-  /**QUANTITE DU PRODUIT */
+  //quantité du produit texte
   let productQuantity = document.createElement('p');
   productQuantity.classList.add('quantity-product');
   productQuantity.innerText = cartContent[i].quantity;
   colQty.appendChild(productQuantity);
   
-  /**ICONE MOINS DANS COL QUANTITE */
+  //icone moins dans col quantité
   let minusIcon = document.createElement('i');
   minusIcon.classList.add('fas', 'fa-minus', 'minus-icon');
   colQty.appendChild(minusIcon);
 
-  /**COLONNE PRIX DU PRODUIT */
+  //colonne prix du produit
   let colPrice = document.createElement('td');
   colPrice.innerText = divide(calcPriceProduct(cartContent[i].price, cartContent[i].quantity));
   tRow.appendChild(colPrice); 

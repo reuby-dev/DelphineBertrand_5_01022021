@@ -56,16 +56,16 @@ function validateCart(cartValue) {
   return error;
 }
 
-//Récupère les valeurs des champs du formulaire
-let firstName = document.getElementById('first-name').value;
-let lastName = document.getElementById('last-name').value;
-let email = document.getElementById('email').value;
-let address = document.getElementById('address').value;
-let postalCode = document.getElementById('postal-code').value;
-let city = document.getElementById('city').value;
-
 function validateForm (cartContent) {
-    
+
+    //Récupère les valeurs des champs du formulaire
+    let firstName = document.getElementById('first-name').value;
+    let lastName = document.getElementById('last-name').value;
+    let email = document.getElementById('email').value;
+    let address = document.getElementById('address').value;
+    let postalCode = document.getElementById('postal-code').value;
+    let city = document.getElementById('city').value;
+        
     //erreur de tout le formulaire
     let error = false;
 
@@ -129,6 +129,13 @@ buttonConfirm.addEventListener('click', function(){
     }
 
     /**REQUETE D'ENVOI */
+    //Récupère les valeurs des champs du formulaire
+let firstName = document.getElementById('first-name').value;
+let lastName = document.getElementById('last-name').value;
+let email = document.getElementById('email').value;
+let address = document.getElementById('address').value;
+let postalCode = document.getElementById('postal-code').value;
+let city = document.getElementById('city').value;
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
