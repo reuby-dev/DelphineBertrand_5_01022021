@@ -9,7 +9,7 @@ function saveOrderId(result) {
     localStorage.setItem('orderId', JSON.stringify(orderId));
   }
 
-/**VALIDATION DES CHAMPS */
+/**VALIDATION DES CHAMPS VIDES */
 function validateField (fieldValue, parentContainerId) {
     // Nettoyer les messages d'erreurs
     let parentContainer = document.getElementById(parentContainerId);
@@ -30,6 +30,62 @@ function validateField (fieldValue, parentContainerId) {
         emptyChildren.innerText = 'Ce champ est obligatoire.';
         parentContainer.appendChild(emptyChildren);
     }
+    return error;
+}
+
+/**VALIDATION DU CHAMP EMAIL */
+function validateEmail (fieldValue, parentContainerId) {
+    // Nettoyer les messages d'erreurs
+    let parentContainer = document.getElementById(parentContainerId);
+    for (let i = 0; i < parentContainer.children.length; i++) {
+        if (parentContainer.children[i].tagName === 'P') {
+            parentContainer.children[i].remove();
+        }
+    }
+    let error = false;
+
+    //regex email
+    function checkEmail(email) {
+        let re = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+        return re.test(email)
+    }
+    let email = document.getElementById('email').value;
+    if (checkEmail(email) === false) {
+        error = true;
+        let parentContainer = document.getElementById(parentContainerId);
+        let emptyChildren = document.createElement('p');
+        emptyChildren.classList.add('text-danger', 'mb-0');
+        emptyChildren.innerText = 'Merci de renseigner une adresse e-mail valide';
+        parentContainer.appendChild(emptyChildren);
+    } 
+    return error;
+}
+
+/**VALIDATION DU CHAMP CODE POSTAL */
+function validatePostalCode (fieldValue, parentContainerId) {
+    // Nettoyer les messages d'erreurs
+    let parentContainer = document.getElementById(parentContainerId);
+    for (let i = 0; i < parentContainer.children.length; i++) {
+        if (parentContainer.children[i].tagName === 'P') {
+            parentContainer.children[i].remove();
+        }
+    }
+    let error = false;
+
+    //regex nombres
+    function checkPostalCode(postalCode) {
+        let re = /^\d{5}$/;
+        return re.test(postalCode)
+    }
+    let postalCode = document.getElementById('postal-code').value;
+    if (checkPostalCode(postalCode) === false) {
+        error = true;
+        let parentContainer = document.getElementById(parentContainerId);
+        let emptyChildren = document.createElement('p');
+        emptyChildren.classList.add('text-danger', 'mb-0');
+        emptyChildren.innerText = 'Merci de renseigner un code postal valide';
+        parentContainer.appendChild(emptyChildren);
+    } 
     return error;
 }
 
@@ -85,10 +141,11 @@ function validateForm (cartContent) {
         error = true;
     }
 
-    //si le champ email est vide
-    if (validateField (email, 'email-container') === true) {
+    //email
+    if (validateField (email, 'email-container') === true || validateEmail (email, 'email-container')) {
         error = true;
     }
+
 
     //si le champ adresse est vide
     if (validateField (address, 'address-container') === true) {
@@ -96,7 +153,7 @@ function validateForm (cartContent) {
     }
 
     //si le champ code postal est vide
-    if (validateField (postalCode, 'postal-code-container') === true) {
+    if (validateField (postalCode, 'postal-code-container') === true || validatePostalCode (postalCode, 'postal-code-container')) {
         error = true;
     }
 
@@ -134,8 +191,8 @@ buttonConfirm.addEventListener('click', function(){
     let lastName = document.getElementById('last-name').value;
     let email = document.getElementById('email').value;
     let address = document.getElementById('address').value;
-    let postalCode = document.getElementById('postal-code').value;
     let city = document.getElementById('city').value;
+
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
