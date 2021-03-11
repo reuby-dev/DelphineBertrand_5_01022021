@@ -1,5 +1,3 @@
-/*CONTIENT LES FONCTIONS GENERALES*/
-
 /*RECUPERE L'IDENTIFIANT DU PRODUIT DANS L'URL*/
 function getId() {
     const param = window.location.search;
@@ -31,7 +29,7 @@ function choiceColor(item) {
     };
 }
 
-/**CREE UN NOUVEL OBJET ET L'AJOUTE AU PANIER */
+/**CREE UN NOUVEL OBJET PUIS L'AJOUTE AU PANIER*/
 function addToCart(item, cart) {
     let newObject = { 
         id : item._id,
@@ -88,11 +86,4 @@ function getSubTotal(cartContent) {
 function displaySubTotal (cartContent) {
     let subTotal = document.getElementById('subtotal');
     subTotal.innerText = divide(getSubTotal(cartContent));
-}
-
-/**MESSAGE D'ALERTE POUR CHAMP VIDE */
-function alertMessage(emptyChildren, parentContainer) {
-    emptyChildren.classList.add('text-danger', 'mb-0');
-    emptyChildren.innerText = 'Ce champ est obligatoire.';
-    parentContainer.appendChild(emptyChildren);
 }

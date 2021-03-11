@@ -3,8 +3,10 @@ fetch('http://localhost:3000/api/teddies/' + getId())
     .then(function (response) {
         return response.json();
     }).then(function (teddy) {
-        displaySheet(teddy);   
+        displaySheet(teddy);
 });
+
+
 
 //tableau associatif de couleurs
 let colorCollection = {
@@ -35,6 +37,7 @@ function displaySheet(teddy) {
     /**PRIX */
     let price = document.getElementById('price-product-sheet');
     price.innerText = divide(teddy.price) + ' €';
+    console.log(divide(500+500));
     
     /**DESCRIPTION DU PRODUIT */
     let descriptionProduct = document.getElementById('description-product-sheet');

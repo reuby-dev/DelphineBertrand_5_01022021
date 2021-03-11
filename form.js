@@ -7,10 +7,10 @@ function saveOrderId(result) {
     let orderId = [];
     orderId.push(id);
     localStorage.setItem('orderId', JSON.stringify(orderId));
-  }
+}
 
 /**VALIDATION DES CHAMPS VIDES */
-function validateField (fieldValue, parentContainerId) {
+function validateEmptyField (fieldValue, parentContainerId) {
     // Nettoyer les messages d'erreurs
     let parentContainer = document.getElementById(parentContainerId);
     for (let i = 0; i < parentContainer.children.length; i++) {
@@ -34,7 +34,7 @@ function validateField (fieldValue, parentContainerId) {
 }
 
 /**VALIDATION DU CHAMP EMAIL */
-function validateEmail (fieldValue, parentContainerId) {
+function validateEmail (parentContainerId) {
     // Nettoyer les messages d'erreurs
     let parentContainer = document.getElementById(parentContainerId);
     for (let i = 0; i < parentContainer.children.length; i++) {
@@ -62,7 +62,7 @@ function validateEmail (fieldValue, parentContainerId) {
 }
 
 /**VALIDATION DU CHAMP CODE POSTAL */
-function validatePostalCode (fieldValue, parentContainerId) {
+function validatePostalCode (parentContainerId) {
     // Nettoyer les messages d'erreurs
     let parentContainer = document.getElementById(parentContainerId);
     for (let i = 0; i < parentContainer.children.length; i++) {
@@ -132,33 +132,33 @@ function validateForm (cartContent) {
     }
 
     //si le champ firstname est vide
-    if (validateField (firstName, 'first-name-container') === true) {
+    if (validateEmptyField (firstName, 'first-name-container') === true) {
         error = true;
     }
 
     //si le champ nom est vide
-    if (validateField (lastName, 'last-name-container') === true) {
+    if (validateEmptyField (lastName, 'last-name-container') === true) {
         error = true;
     }
 
     //email
-    if (validateField (email, 'email-container') === true || validateEmail (email, 'email-container')) {
+    if (validateEmptyField (email, 'email-container') === true || validateEmail (email, 'email-container')) {
         error = true;
     }
 
 
     //si le champ adresse est vide
-    if (validateField (address, 'address-container') === true) {
+    if (validateEmptyField (address, 'address-container') === true) {
         error = true;
     }
 
     //si le champ code postal est vide
-    if (validateField (postalCode, 'postal-code-container') === true || validatePostalCode (postalCode, 'postal-code-container')) {
+    if (validateEmptyField (postalCode, 'postal-code-container') === true || validatePostalCode (postalCode, 'postal-code-container')) {
         error = true;
     }
 
     //si le champ ville est vide
-    if (validateField (city, 'city-container') === true) {
+    if (validateEmptyField (city, 'city-container') === true) {
         error = true;
     }  
 
