@@ -34,7 +34,7 @@ function validateEmptyField (fieldValue, parentContainerId) {
 }
 
 /**VALIDATION DU CHAMP EMAIL */
-function validateEmail (parentContainerId) {
+function validateEmail (fieldValue, parentContainerId) {
     // Nettoyer les messages d'erreurs
     let parentContainer = document.getElementById(parentContainerId);
     for (let i = 0; i < parentContainer.children.length; i++) {
@@ -62,7 +62,7 @@ function validateEmail (parentContainerId) {
 }
 
 /**VALIDATION DU CHAMP CODE POSTAL */
-function validatePostalCode (parentContainerId) {
+function validatePostalCode (fieldValue, parentContainerId) {
     // Nettoyer les messages d'erreurs
     let parentContainer = document.getElementById(parentContainerId);
     for (let i = 0; i < parentContainer.children.length; i++) {
