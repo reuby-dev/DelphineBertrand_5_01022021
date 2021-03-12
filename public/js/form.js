@@ -9,6 +9,38 @@ function saveOrderId(result) {
     localStorage.setItem('orderId', JSON.stringify(orderId));
 }
 
+/**REGEX UNIQUEMENT DES LETTRES */
+function checkLetters(value) {
+    let re = /[a-zA-Z]/;
+    return re.test(value);
+}
+
+/**VALIDATION DES CHAMPS AVEC UNIQUEMENT DES LETTRES */
+function validateOnlyLetters (fieldValue, parentContainerId) {
+    // Nettoyer les messages d'erreurs
+    let parentContainer = document.getElementById(parentContainerId);
+    for (let i = 0; i < parentContainer.children.length; i++) {
+        if (parentContainer.children[i].tagName === 'P') {
+            parentContainer.children[i].remove();
+        }
+    }
+
+    let error = false;
+
+    //on analyse les champs
+    if (checkLetters(fieldValue) === false) {
+        
+        error = true;
+        let parentContainer = document.getElementById(parentContainerId);
+        let emptyChildren = document.createElement('p');
+        emptyChildren.classList.add('text-danger', 'mb-0');
+        emptyChildren.innerText = 'Ce champ ne doit contenir que des lettres';
+        parentContainer.appendChild(emptyChildren);
+    } 
+    
+    return error;
+}
+
 /**VALIDATION DES CHAMPS VIDES */
 function validateEmptyField (fieldValue, parentContainerId) {
     // Nettoyer les messages d'erreurs
@@ -21,7 +53,7 @@ function validateEmptyField (fieldValue, parentContainerId) {
 
     let error = false;
 
-    // On analyse le champ
+    // On analyse le champ vide
     if (fieldValue === "") {
         error = true;
         let parentContainer = document.getElementById(parentContainerId);
@@ -30,7 +62,14 @@ function validateEmptyField (fieldValue, parentContainerId) {
         emptyChildren.innerText = 'Ce champ est obligatoire.';
         parentContainer.appendChild(emptyChildren);
     }
+    
     return error;
+}
+
+/**REGEX EMAIL */
+function checkEmail(email) {
+    let re = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+    return re.test(email)
 }
 
 /**VALIDATION DU CHAMP EMAIL */
@@ -44,13 +83,8 @@ function validateEmail (fieldValue, parentContainerId) {
     }
     let error = false;
 
-    //regex email
-    function checkEmail(email) {
-        let re = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-        return re.test(email)
-    }
-    let email = document.getElementById('email').value;
-    if (checkEmail(email) === false) {
+    //on analyse le champ email
+    if (checkEmail(fieldValue) === false) {
         error = true;
         let parentContainer = document.getElementById(parentContainerId);
         let emptyChildren = document.createElement('p');
@@ -59,6 +93,12 @@ function validateEmail (fieldValue, parentContainerId) {
         parentContainer.appendChild(emptyChildren);
     } 
     return error;
+}
+
+//regex uniquement 5 nombres
+function checkPostalCode(postalCode) {
+    let re = /^\d{5}$/;
+    return re.test(postalCode)
 }
 
 /**VALIDATION DU CHAMP CODE POSTAL */
@@ -72,13 +112,7 @@ function validatePostalCode (fieldValue, parentContainerId) {
     }
     let error = false;
 
-    //regex nombres
-    function checkPostalCode(postalCode) {
-        let re = /^\d{5}$/;
-        return re.test(postalCode)
-    }
-    let postalCode = document.getElementById('postal-code').value;
-    if (checkPostalCode(postalCode) === false) {
+    if (checkPostalCode(fieldValue) === false) {
         error = true;
         let parentContainer = document.getElementById(parentContainerId);
         let emptyChildren = document.createElement('p');
@@ -132,17 +166,17 @@ function validateForm (cartContent) {
     }
 
     //si le champ firstname est vide
-    if (validateEmptyField (firstName, 'first-name-container') === true) {
+    if (validateEmptyField (firstName, 'first-name-container') === true || validateOnlyLetters (firstName, 'first-name-container')) {
         error = true;
     }
 
     //si le champ nom est vide
-    if (validateEmptyField (lastName, 'last-name-container') === true) {
+    if (validateEmptyField (lastName, 'last-name-container') === true || validateOnlyLetters (lastName, 'last-name-container') === true) {
         error = true;
     }
 
     //email
-    if (validateEmptyField (email, 'email-container') === true || validateEmail (email, 'email-container')) {
+    if (validateEmptyField (email, 'email-container') === true || validateEmail (email, 'email-container') === true) {
         error = true;
     }
 
@@ -158,7 +192,7 @@ function validateForm (cartContent) {
     }
 
     //si le champ ville est vide
-    if (validateEmptyField (city, 'city-container') === true) {
+    if (validateEmptyField (city, 'city-container') === true || validateOnlyLetters (city, 'city-container') === true) {
         error = true;
     }  
 

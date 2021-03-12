@@ -13,8 +13,6 @@ fetch('http://localhost:3000/api/teddies/' + getId())
         displaySheet(teddy);
 });
 
-
-
 //tableau associatif de couleurs
 let colorCollection = {
     'Pale brown' : '#A27557',

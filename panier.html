@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- CSS personnalisé-->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="public/styles/style.css">
     <!--Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Google font-->
@@ -27,7 +27,7 @@
                         alt="le logo d'oronico représentant un caddie pour le shopping">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
@@ -76,7 +76,7 @@
             </div>
             <div class="col rounded bg-prim p-3 mb-5">
                 <h2 class="mb-3">Vos coordonnées</h2>
-                <form action="" method="post">
+                <form method="post" id="form">
 
                     <div class="row">
                         <div id="first-name-container" class="col d-flex flex-column mb-3">
@@ -86,7 +86,7 @@
                         </div>
 
                         <div id="last-name-container" class="col d-flex flex-column mb-3">
-                            <label for="name">Nom <span class="text-danger">*</span></label>
+                            <label for="last-name">Nom <span class="text-danger">*</span></label>
                             <input id="last-name" type="text" name="name" required pattern="[A-Za-z]{2,20}">
                         </div>
                     </div>
@@ -98,7 +98,7 @@
                         </div>
 
                         <div id="address-container" class="col d-flex flex-column mb-3">
-                            <label for="adress">Adresse <span class="text-danger">*</span></label>
+                            <label for="address">Adresse <span class="text-danger">*</span></label>
                             <input id="address" type="text" name="adress" required pattern="[A-Za-z0-9,]{2,50}">
                         </div>
                     </div>
@@ -122,9 +122,9 @@
         </div>
     </main>
 
-    <script src="public/functions.js"></script>
-    <script src="public/form.js"></script>
-    <script src="public/panier.js"></script>
+    <script src="public/js/functions.js"></script>
+    <script src="public/js/form.js"></script>
+    <script src="public/js/panier.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
