@@ -21,8 +21,8 @@ HTML, CSS, Bootstrap et JavaScript en vanilla.
 
 - Prérequis
 
-    Node.js (version 14.15.1 LTS utilisée durant le développement)
-    NPM (version 6.14.8 utilisée durant le développement)
+Node.js
+NPM
 
 - Installation
 
