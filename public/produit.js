@@ -37,7 +37,6 @@ function displaySheet(teddy) {
     /**PRIX */
     let price = document.getElementById('price-product-sheet');
     price.innerText = divide(teddy.price) + ' €';
-    console.log(divide(500+500));
     
     /**DESCRIPTION DU PRODUIT */
     let descriptionProduct = document.getElementById('description-product-sheet');
