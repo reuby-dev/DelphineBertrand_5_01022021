@@ -1,3 +1,10 @@
+/*RECUPERE L'IDENTIFIANT DU PRODUIT DANS L'URL*/
+function getId() {
+    const param = window.location.search;
+    const id = param.replace('?id=', '');
+    return id;
+}
+
 //requête récupération du produit
 fetch('http://localhost:3000/api/teddies/' + getId())
     .then(function (response) {
@@ -21,6 +28,57 @@ let colorCollection = {
     'Pink': '#FFC0CB',
     'Beige': '#C8AD7F',
 };
+
+/**CHOIX DES COULEURS DYNAMIQUE */
+function choiceColor(item) {
+    let colorContainer = document.getElementById('color-container')
+    for (let i = 0; i < item.colors.length; i++) { 
+        let colorChoice = document.createElement('div'); //pour chaque nom de couleur contenu dans la liste colors de l'api, ajouter une div
+        let idColor = item.colors[i]; //récupère le nom de la couleur contenu dans l'élément teddy de l'api
+        let hexColor = colorCollection[idColor]; //associe le nom de la couleur à un code hexadécimal
+        colorChoice.classList.add('color-choice');
+        colorChoice.style.backgroundColor = hexColor; //crée un style background color dynamique, lié au code hexa créé dans le tableau associatif
+        colorContainer.appendChild(colorChoice);
+
+        //taille dynamique des choix des couleurs
+        if (item.colors.length === 1) {
+            colorChoice.style.width = '100%';
+        } else if (item.colors.length === 2) {
+            colorChoice.style.width = '50%';
+        } else if (item.colors.length === 3) {
+            colorChoice.style.width = '30%';
+        } else if (item.colors.length > 3) {
+            colorChoice.style.width = '20%';
+        }
+    };
+}
+
+/**CREE UN NOUVEL OBJET PUIS L'AJOUTE AU PANIER*/
+function addToCart(item, cart) {
+    let newObject = { 
+        id : item._id,
+        name : item.name,
+        color : item.colors,
+        price : item.price,
+        quantity : 1
+    }
+
+    //si l'objet est présent dans le panier, incrémenter la quantité de 1 à chaque clic sur le bouton
+    let isPresent = false;
+    for (let i=0; i < cart.length; i++) {
+        if (newObject.id === cart[i].id) {
+            console.log('teddy déjà existant');
+            isPresent = true;
+            cart[i].quantity ++;
+        }
+    }
+
+    //si l'objet n'est pas dans le panier, le pousser dedans
+    if (isPresent === false) {
+        cart.push(newObject);            
+        console.log('nouveau teddy');
+    }
+}
 
 //création de la fiche produit
 function displaySheet(teddy) {
