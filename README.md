@@ -13,4 +13,4 @@ L’application web sera composée de 4 pages:
 - Une page de confirmation de commande, remerciant l'utilisateur pour sa commande, et indiquant le prix total et l'identifiant de commande envoyé par le serveur.
 
 # Technologies utilisées
-HTML, CSS et JavaScript.
+HTML, CSS, Bootstrap et JavaScript en vanilla.
