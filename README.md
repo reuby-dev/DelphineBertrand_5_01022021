@@ -1,6 +1,8 @@
 # Orinoco
 Quatrième projet réalisé dans le cadre de ma formation Développeur web Openclassroom. Le but était créer un premier MVP d'un site e-commerce. L'emphase était donc mise dans un premier temps sur le coté fonctionnel, plutôt qu'esthétique.
 
+![image](https://user-images.githubusercontent.com/74512723/110957606-0d5ec580-834c-11eb-9954-ffb38b473474.png) ![image](https://user-images.githubusercontent.com/74512723/110957669-210a2c00-834c-11eb-90b9-678bb05338d3.png) ![image](https://user-images.githubusercontent.com/74512723/110957749-35e6bf80-834c-11eb-8c3e-090f9b2e0f93.png)
+
 # Identité
 Le but d'Orinoco est de se démarquer des grands site e-commerce comme Amazon en créant des applications thématiques ne vendant qu’un seul groupe de produits. Il y a par exemple Oribook pour les livres ou Oritextil pour les vêtements.
 
