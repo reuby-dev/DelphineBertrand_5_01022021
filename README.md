@@ -25,6 +25,6 @@ Node.js et NPM
 
 - Installation
 
-npm installµ
+npm install
 
 npm start (dans le dossier back)
