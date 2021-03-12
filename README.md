@@ -21,8 +21,7 @@ HTML, CSS, Bootstrap et JavaScript en vanilla.
 
 - Prérequis
 
-Node.js
-NPM
+Node.js et NPM
 
 - Installation
 
