@@ -16,3 +16,15 @@ L’application web sera composée de 4 pages:
 
 # Technologies utilisées
 HTML, CSS, Bootstrap et JavaScript en vanilla.
+
+# Tester le site en local
+
+- Prérequis
+
+    Node.js (version 14.15.1 LTS utilisée durant le développement)
+    NPM (version 6.14.8 utilisée durant le développement)
+
+- Installation
+
+npm install
+npm start (dans le dossier back)
