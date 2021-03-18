@@ -166,7 +166,7 @@ function validateForm (cartContent) {
     }
 
     //si le champ firstname est vide
-    if (validateEmptyField (firstName, 'first-name-container') === true || validateOnlyLetters (firstName, 'first-name-container')) {
+    if (validateEmptyField (firstName, 'first-name-container') === true || validateOnlyLetters (firstName, 'first-name-container') === true) {
         error = true;
     }
 
