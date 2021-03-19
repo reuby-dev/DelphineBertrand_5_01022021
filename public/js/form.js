@@ -202,7 +202,9 @@ function validateForm (cartContent) {
 /**REQUETE D'ENVOI DE LA COMMANDE */
 
 let buttonConfirm = document.getElementById('confirm-command');
-buttonConfirm.addEventListener('click', function(){
+buttonConfirm.addEventListener('click', function(e){
+    e.preventDefault();
+
     //recupère le contenu du local storage
     let cartContent = JSON.parse(localStorage.getItem('cart'));
     let globalError = validateForm (cartContent);
@@ -212,6 +214,8 @@ buttonConfirm.addEventListener('click', function(){
         return;
     }
 
+    console.log('form ok')
+
     /**RECUPERE LES IDENTIFIANTS DU PRODUIT DU PANIER */
     let idProducts=[];
     for (let i =0; i < cartContent.length; i++) {
@@ -219,18 +223,21 @@ buttonConfirm.addEventListener('click', function(){
         idProducts.push(result);
     }
 
+    console.log('poroducts', idProducts)
+
     /**REQUETE D'ENVOI */
     //Récupère les valeurs des champs du formulaire
     let firstName = document.getElementById('first-name').value;
     let lastName = document.getElementById('last-name').value;
     let email = document.getElementById('email').value;
     let address = document.getElementById('address').value;
+    let postalCode = document.getElementById('postal-code').value;
     let city = document.getElementById('city').value;
 
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    let raw = JSON.stringify({"contact":{"firstName":firstName,"lastName":lastName,"address":address,"city":city,"email":email},"products":[idProducts]});
+    let raw = JSON.stringify({"contact":{"firstName":firstName,"lastName":lastName,"address":address, "postalCode":postalCode, "city":city,"email":email},"products":idProducts});
 
     let requestOptions = {
         method: 'POST',
@@ -239,13 +246,16 @@ buttonConfirm.addEventListener('click', function(){
         redirect: 'follow'
     };
 
-
-  fetch('http://localhost:3000/api/teddies/order/', requestOptions)
+  fetch("http://localhost:3000/api/teddies/order", requestOptions)
   .then(function (response) {
+      
       return response.json();
   }).then(function (result) {
       console.log(result);  
       saveOrderId(result);
       document.location.href="validation.html";
+  }).catch(error => {
+      console.log('fetch error', error)
   })
-})
+
+});
