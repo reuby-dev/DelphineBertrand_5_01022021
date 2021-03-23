@@ -214,16 +214,12 @@ buttonConfirm.addEventListener('click', function(e){
         return;
     }
 
-    console.log('form ok')
-
     /**RECUPERE LES IDENTIFIANTS DU PRODUIT DU PANIER */
     let idProducts=[];
     for (let i =0; i < cartContent.length; i++) {
         result = cartContent[i].id;
         idProducts.push(result);
     }
-
-    console.log('poroducts', idProducts)
 
     /**REQUETE D'ENVOI */
     //Récupère les valeurs des champs du formulaire

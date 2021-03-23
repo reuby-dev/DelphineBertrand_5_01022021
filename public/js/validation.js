@@ -10,3 +10,12 @@ let orderId = JSON.parse(localStorage.getItem('orderId'));
 //affiche le résultat dans le span display order id
 let displayOrderId = document.getElementById('display-order-id');
 displayOrderId.innerText = ("\"" + orderId + "\"");
+
+
+function redirectAndClear() {
+    document.location.href="index.html";
+    localStorage.clear();
+}
+
+setTimeout(redirectAndClear, 5000);
+
